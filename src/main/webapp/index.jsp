@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,7 +20,15 @@
 
 
 
-                <div><a href="/login">Login</a></div>
+                <c:choose>
+                    <c:when test="${isLogin eq true}">
+                        <div><p></p>Привет, ${login}!</p></div>
+                        <div><a href="/logout">Logout</a> </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div><a href="/login">Login</a> </div>
+                    </c:otherwise>
+                </c:choose>
 
 
             </div>
@@ -31,9 +39,12 @@
             <a href="/students">Студенты</a>
             <a href="/disciplines">Дисциплины</a>
             <a href="/terms">Семестры</a>
+
         </section>
+
     </main>
     <footer>
+
         <div>&copy; 2022 Goldstein Corp.</div>
     </footer>
 </div>

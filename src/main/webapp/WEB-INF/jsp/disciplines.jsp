@@ -10,8 +10,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Disciplines List</title>
-    <link rel="stylesheet" href="../../resources/fonts/fonts.css">
-    <link rel="stylesheet" type="text/css" href="../../resources/css/style.css">
+    <link rel="stylesheet" href="../../resources/fonts/fonts.css?v=232">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/style.css?v=232">
     <script src="../../resources/js/functions.js"></script>
 </head>
 <body>
@@ -22,8 +22,15 @@
             <div class="login">
 
 
-                <div><p>Привет, admin!</p></div>
-                <div><a href="/logout">Logout</a></div>
+                <c:choose>
+                    <c:when test="${isLogin eq true}">
+                        <div><p></p>Привет, ${login}!</p></div>
+                        <div><a href="/logout">Logout</a> </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div><a href="/login">Login</a> </div>
+                    </c:otherwise>
+                </c:choose>
 
 
 

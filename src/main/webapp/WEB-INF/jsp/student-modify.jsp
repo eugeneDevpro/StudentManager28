@@ -27,15 +27,24 @@
             <div class="login">
 
 
-                <div><p>Привет, admin!</p></div>
-                <div><a href="/">Logout</a></div>
+                <c:choose>
+                    <c:when test="${isLogin eq true}">
+                        <div><p></p>Привет, ${login}!</p></div>
+                        <div><a href="/logout">Logout</a> </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div><a href="/login">Login</a> </div>
+                    </c:otherwise>
+                </c:choose>
+
+
             </div>
         </nav>
     </header>
     <main>
         <section class="content">
             <div class="side_menu">
-                <div><a href="/home">На главную</a></div>
+                <div><a href="/">На главную</a></div>
                 <div><a href="/students">Назад</a></div>
             </div>
             <div class="main">

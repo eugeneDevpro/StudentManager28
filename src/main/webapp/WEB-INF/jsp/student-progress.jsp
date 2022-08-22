@@ -1,8 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,8 +20,15 @@
             <div class="login">
 
 
-                <div><p>Привет, admin!</p></div>
-                <div><a href="/logout">Logout</a></div>
+                <c:choose>
+                    <c:when test="${isLogin eq true}">
+                        <div><p></p>Привет, ${login}!</p></div>
+                        <div><a href="/logout">Logout</a> </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div><a href="/login">Login</a> </div>
+                    </c:otherwise>
+                </c:choose>
 
 
 
@@ -33,7 +38,7 @@
     <main>
         <section class="content">
             <div class="side_menu">
-                <div><a href="/home">На главную</a></div>
+                <div><a href="/">На главную</a></div>
                 <div><a href="/students">Назад</a></div>
             </div>
             <div class="main">
@@ -51,7 +56,7 @@
                             <td class="lp_col0">${student.surname}</td>
                             <td class="lp_col1">${student.name}</td>
                             <td class="lp_col2">${student.group.group}</td>
-                            <td class="lp_col3"><fmt:formatDate value="${s.date}" pattern="dd/MM/yyyy"/></td>
+                            <td class="lp_col3"><fmt:formatDate value="${student.date}" pattern="dd/MM/yyyy"/></td>
                         </tr>
                     </table>
                 </div>
@@ -60,50 +65,38 @@
                         <table class="list">
                             <tr>
                                 <th class="lm_col0">Дисциплина</th>
-
                                 <th class="lm_col1">Оценка</th>
-
                             </tr>
-
-                            <c:forEach> items=$"{marks}" var="m">
-
+                            <c:forEach items="${marks}" var="m">
                             <tr>
-                                <td class="lm_col0">$"{m.discipline.discipline}</td>
-
-                                <c:if test="${m.mark ne -1}"
-
-                                <td class="lm_col1">$"{m.mark}</td>
-
+                                <td class="lm_col0">${m.discipline.discipline}</td>
+                                <c:if test="${m.mark ne -1}">
+                                <td class="lm_col1">${m.mark}</td>
+                                </c:if>
                             </tr>
-
                             </c:forEach>
-
-
 
                         </table>
                     </div>
                     <div class="term_average_mark">
                         <div class="term">
                             Выбрать семестр
-                            <form action="/student_progress" method="get">
+                            <form action="/student-progress" method="get">
                                 <label>
-                                    <input type="hidden" name="progressHidden" value="1">
-                                    <c:forEach items="${terms}" var="t">
-                                        <option value="${t.id}">${term}</option>
-                                    </c:forEach>
-                                    <select name="idSelectedTerm">
-
-                                        <option selected value="2">Семестр 2</option>
-
-
-
-
-
-
-
-                                        <option value="3">Семестр 3</option>
-
-
+                                    <input type="hidden" name="idsHiddenProgress" value="${student.id}">
+                                    <select name="idTerm">
+                                        <c:forEach items="${terms}" var="t">
+                                            <c:choose>
+                                                <c:when test="${t.id== selectedTerm.id}">
+                                                    <option selected value="${t.id}">${t.term}</option>
+                                                    <br />
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <option value="${t.id}">${t.term}</option>
+                                                    <br />
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
 
                                     </select>
                                 </label>
@@ -112,7 +105,7 @@
                         </div>
                         <div class="average_mark">
                             Средняя оценка за семестр:
-                            <h3>2,67 балла</h3>
+                            <h3><fmt:formatNumber value="${avg}" maxFractionDigits="2"></fmt:formatNumber> Баллов</h3>
                         </div>
                     </div>
                 </div>
@@ -120,7 +113,7 @@
         </section>
     </main>
     <footer>
-        <div>&copy; 2022 Alexander Shirdin</div>
+        <div>&copy; 2022 Goldstein Corp.</div>
     </footer>
 </div>
 </body>

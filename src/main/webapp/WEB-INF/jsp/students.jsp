@@ -7,9 +7,6 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<%--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"--%>
-<%--        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">--%>
-<%--  <meta http-equiv="X-UA-Compatible" content="ie=edge">--%>
   <title>Students List</title>
   <link rel="stylesheet" href="../../resources/fonts/fonts.css?V=232">
   <link rel="stylesheet" type="text/css" href="../../resources/css/style.css?V=232">
@@ -23,8 +20,17 @@
       <div class="login">
 
 
-        <div><p>Привет, admin!</p></div>
-        <div><a href="/">Logout</a></div>
+        <c:choose>
+          <c:when test="${isLogin eq true}">
+            <div><p></p>Привет, ${login}!</p></div>
+            <div><a href="/logout">Logout</a> </div>
+          </c:when>
+          <c:otherwise>
+            <div><a href="/login">Login</a> </div>
+          </c:otherwise>
+        </c:choose>
+
+
       </div>
     </nav>
   </header>
@@ -77,17 +83,15 @@
 </div>
 </body>
 
-<form action="/student-delete"method="post" id="deleteForm">
+<form action="/student-delete" method="post" id="deleteForm">
   <input type="hidden" name="idsHiddenDelete" id="idsHiddenDelete">
-
 </form>
 
-<form action="/student-modify"method="get" id="modifyForm">
+<form action="/student-modify" method="get" id="modifyForm">
   <input type="hidden" name="idsHiddenModify" id="idsHiddenModify">
 </form>
 
-
-<form action="/student-progress"method="get" id="progressForm">
+<form action="/student-progress" method="get" id="progressForm">
   <input type="hidden" name="idsHiddenProgress" id="idsHiddenProgress">
 </form>
 
