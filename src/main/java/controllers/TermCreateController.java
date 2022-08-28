@@ -17,7 +17,7 @@ public class TermCreateController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        ArrayList<Discipline> disciplines = DBManager.getAllActiveDisciplines();
+        ArrayList<Discipline> disciplines = DBManager.getAllActiveDiscipline();
         req.setAttribute("disciplines", disciplines);
         req.getRequestDispatcher("WEB-INF/jsp/term-create.jsp").forward(req, resp);
 
@@ -33,7 +33,7 @@ public class TermCreateController extends HttpServlet {
 
         if(duration == null || idsDisc == null  || duration.equals("")){
             req.setAttribute("error", "1");
-            ArrayList<Discipline> disciplines = DBManager.getAllActiveDisciplines();
+            ArrayList<Discipline> disciplines = DBManager.getAllActiveDiscipline();
             req.setAttribute("disciplines", disciplines);
             req.getRequestDispatcher("WEB-INF/jsp/term-create.jsp").forward(req, resp);
             return;

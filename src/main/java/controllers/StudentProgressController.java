@@ -30,6 +30,7 @@ public class StudentProgressController extends HttpServlet {
         Student student = DBManager.getStudentById(idStud);
         ArrayList<Term> terms = DBManager.getAllActiveTerms();
 
+
         if(idTerm == null || idTerm.equals("")){
             if(terms.size() !=0){
                 idTerm = terms.get(0).getId() + "";
@@ -61,7 +62,6 @@ public class StudentProgressController extends HttpServlet {
         }else {
             req.setAttribute("avg","0.0");
         }
-
 
 
        req.setAttribute("student", student);

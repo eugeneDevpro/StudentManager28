@@ -8,7 +8,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Students List</title>
-    <link rel="stylesheet" href="../code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="../../code.jquery.com/ui/1.13.1/jquery-ui.css">
     <link rel="stylesheet" href="../../resources/fonts/fonts.css?v=232">
     <link rel="stylesheet" type="text/css" href="../../resources/css/style.css?v=232">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>

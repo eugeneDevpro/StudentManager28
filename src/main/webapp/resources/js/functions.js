@@ -1,8 +1,10 @@
+
+
 function deleteStudents() {
     var checkedCheckboxs = document.querySelectorAll('input[name=idStudent]:checked')
 
     if (checkedCheckboxs.length == 0) {
-        alert("Please check Student");
+        alert("Пожалуйста выберите студента!");
         return;
 
 
@@ -25,13 +27,13 @@ function modifyStudents() {
     var checkedCheckboxs = document.querySelectorAll('input[name=idStudent]:checked')
 
     if (checkedCheckboxs.length == 0) {
-        alert("Please check student");
+        alert("Пожалуйста выберите студента!");
         return;
     }
 
 
     if (checkedCheckboxs.length > 1) {
-        alert("Please check only one student");
+        alert("Только одного студента!");
         return;
     }
 
@@ -46,7 +48,7 @@ function deleteDisciplines() {
     var checkedCheckboxs = document.querySelectorAll('input[name=idDiscipline]:checked')
 
     if (checkedCheckboxs.length == 0) {
-        alert("Please check Discipline");
+        alert("Пожалуйста выберите дисциплину!");
         return;
 
 
@@ -59,7 +61,7 @@ function deleteDisciplines() {
     }
 
 
-    document.getElementById("idsHiddenDelete").value = ids;
+    document.getElementById("idHiddenDelete").value = ids;
     document.getElementById("deleteForm").submit();
 
 
@@ -69,19 +71,19 @@ function modifyDiscipline() {
     var checkedCheckboxs = document.querySelectorAll('input[name=idDiscipline]:checked')
 
     if (checkedCheckboxs.length == 0) {
-        alert("Please check Discipline");
+        alert("Пожалуйста выберите дисциплину!");
         return;
     }
 
 
     if (checkedCheckboxs.length > 1) {
-        alert("Please check only one Discipline");
+        alert("Только одну дисциплину!");
         return;
     }
 
     var id = checkedCheckboxs[0].value
 
-    document.getElementById("idsHiddenModify").value = id;
+    document.getElementById("idHiddenModify").value = id;
     document.getElementById("modifyForm").submit();
 
 }
@@ -92,13 +94,13 @@ function studentProgress() {
     var checkedCheckboxs = document.querySelectorAll('input[name=idStudent]:checked')
 
     if (checkedCheckboxs.length == 0) {
-        alert("Please check student");
+        alert("Пожалуйста выберите студента!");
         return;
     }
 
 
     if (checkedCheckboxs.length > 1) {
-        alert("Please check only one student");
+        alert("Только одного студента!");
         return;
     }
 

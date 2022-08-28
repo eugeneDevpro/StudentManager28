@@ -93,6 +93,6 @@
 </form>
 
 <form action="/discipline-modify"method="get" id="modifyForm">
-    <input type="hidden" name="idsHiddenModify" id="idsHiddenModify">
+    <input type="hidden" name="idHiddenModify" id="idHiddenModify">
 </form>
 </html>

@@ -358,7 +358,7 @@ public class DBManager {
     }
 
     public static Term getTermById(String idTerm) {
-        ArrayList<Term> terms = new ArrayList<>();
+
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -367,7 +367,6 @@ public class DBManager {
             ResultSet rs = stmt.executeQuery("SELECT * FROM term where status = 1 AND id="+idTerm);
 
             while (rs.next()) {
-
                 Term term = new Term();
                 term.setId(rs.getInt("id"));
                 term.setTerm(rs.getString("term"));
@@ -385,7 +384,7 @@ public class DBManager {
     }
 
     public static ArrayList<Mark> getMarks (String idStud, String idTerm) {
-        ArrayList<Mark> marks = new ArrayList<>();
+        ArrayList <Mark> marks = new ArrayList<>();
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -394,13 +393,13 @@ public class DBManager {
             ResultSet rs = stmt.executeQuery("SELECT d.id, d.discipline, m.mark FROM mark as m\n" +
                     "left join term_discipline as td on m.id_term_discipline = td.id\n" +
                     "left join discipline as d on td.id_discipline = d.id\n" +
-                    "where m.id_student = "+idStud+" and td.id_term = " +idTerm);
+                    "where m.id_student = "+idStud+" and td.id_term = " + idTerm);
 
             while (rs.next()) {
                 Mark mark = new Mark();
                 mark.setMark(rs.getInt("mark"));
                 Discipline discipline = new Discipline();
-                discipline.setId(rs.getInt("id_discipline"));
+                discipline.setId(rs.getInt("id"));
                 discipline.setDiscipline(rs.getString("discipline"));
                 mark.setDiscipline(discipline);
 
